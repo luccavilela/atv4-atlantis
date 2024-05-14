@@ -40,7 +40,7 @@ export default class Cliente {
 
     public set Endereco(endereco: Endereco) { this.endereco = endereco }
     public set Documento(documento: Documento) { this.documento = documento }
-    public set Telefones(telefone: string) { this.telefone = telefone }
+    public set Telefone(telefone: string) { this.telefone = telefone }
     public set Titular(titular: Cliente) {this.titular = titular}
     public set Acomodacao(acomodacao: Acomodacao) {this.acomodacao = acomodacao}
 }

@@ -1,4 +1,3 @@
-// FormularioCadastroClienteTitular.tsx
 import React from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import Cliente from "../modelos/cliente";
@@ -31,7 +30,7 @@ export default function FormularioCadastroClienteTitular(props: FormularioCadast
         const endereco = new Endereco(rua, bairro, cidade, estado, pais, codigoPostal);
         const documento = new Documento(numeroDocumento, tipoDocumento, dataExpedicao);
         const cliente = new Cliente(nome, nomeSocial, dataNascimento);
-        cliente.Telefones = telefone;
+        cliente.Telefone = telefone;
         cliente.Endereco = endereco;
         cliente.Documento = documento;
 

@@ -9,3 +9,7 @@ export const adicionarCliente = (cliente: Cliente) => {
 export const obterClientes = () => {
     return clientes;
 };
+
+export function removerCliente(index: number): void {
+    clientes.splice(index, 1);
+}
