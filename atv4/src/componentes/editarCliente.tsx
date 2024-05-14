@@ -48,7 +48,7 @@ export default function EditarCliente(props: EditarClienteProps){
                     </div>
                     <div className="row">
                         <div className="col s12">
-                            <button className="waves-effect waves-light btn cadastrar-botao botao-customizado" type="submit" name="action" onClick={(e) => props.seletorView("Clientes", e)}>Atualizar dados
+                            <button className="waves-effect waves-light btn cadastrar-botao botao-customizado" type="submit" name="action" onClick={(e) => props.seletorView("Clientes Titulares", e)}>Atualizar dados
                                 <i className="material-icons right">send</i>
                             </button>
                         </div>

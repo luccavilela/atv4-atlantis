@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+// FormularioCadastroClienteTitular.tsx
+import React from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import Cliente from "../modelos/cliente";
 import Endereco from "../modelos/endereco";
 import Documento from "../modelos/documento";
+import { adicionarCliente } from "../modelos/armazem";
 
 interface FormularioCadastroClienteTitularProps {
     seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 export default function FormularioCadastroClienteTitular(props: FormularioCadastroClienteTitularProps){
-    const [clientes, setClientes] = useState<Cliente[]>([]);
-
     const handleCadastroCliente = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
@@ -35,11 +35,11 @@ export default function FormularioCadastroClienteTitular(props: FormularioCadast
         cliente.Endereco = endereco;
         cliente.Documento = documento;
 
-        setClientes([...clientes, cliente]);
+        adicionarCliente(cliente);
 
         event.currentTarget.reset();
 
-        console.log("Clientes cadastrados:", clientes);
+        
     }
 
     return (
@@ -108,6 +108,5 @@ export default function FormularioCadastroClienteTitular(props: FormularioCadast
                 </div>
             </form>
         </div>
-
     )
 }
