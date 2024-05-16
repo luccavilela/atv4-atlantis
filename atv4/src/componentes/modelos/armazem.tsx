@@ -6,8 +6,12 @@ export const adicionarCliente = (cliente: Cliente) => {
     clientes.push(cliente);
 };
 
-export const obterClientes = () => {
-    return clientes;
+export const obterClientesTitulares = () => {
+    return clientes.filter(cliente => !cliente.Titular);
+};
+
+export const obterClientesDependentes = () => {
+    return clientes.filter(cliente => cliente.Titular);
 };
 
 export function removerCliente(index: number): void {

@@ -2,12 +2,12 @@ import { useState } from "react";
 import BarraNavegacao from "./barraNavegacao";
 import "../styles.css"
 import Home from "./home"
-import EditarCliente from "./editarCliente"
 import ListaProdutos from "./listaProdutos";
 import ListaClientesTitulares from "./listagem/listaClientesTitulares";
 import FormularioCadastroClienteTitular from "./cadastro/formularioCadastroClienteTitular";
 import ListaClientesDependentes from "./listagem/listaClientesDependentes";
 import FormularioCadastroClienteDependente from "./cadastro/formularioCadastroClienteDependente";
+import EditarClienteTitular from "./editar/editarClienteTitular";
 
 export default function Roteador() {
     const [tela, setTela] = useState('Home')
@@ -55,11 +55,11 @@ export default function Roteador() {
                   <FormularioCadastroClienteDependente seletorView={seletorView} tema="purple lighten-4" />
                 </>
               );
-            case 'Editar Cliente':
+            case 'Editar Cliente Titular':
               return (
                 <>
                   <BarraNavegacao seletorView={seletorView} tema="purple lighten-4" botoes={['Home', 'Clientes Titulares', 'Clientes Dependentes', 'Produtos']} />
-                  <EditarCliente seletorView={seletorView} tema="purple lighten-4" />
+                  <EditarClienteTitular seletorView={seletorView} tema="purple lighten-4" />
                 </>
               );
             case 'Produtos':

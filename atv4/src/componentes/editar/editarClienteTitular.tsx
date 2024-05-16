@@ -1,15 +1,15 @@
 import React from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 
-interface EditarClienteProps {
+interface EditarClienteTitularProps {
     seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 
-export default function EditarCliente(props: EditarClienteProps){
+export default function EditarClienteTitular(props: EditarClienteTitularProps){
         return (
             <div className="row">
-                <h2> Editar Cliente </h2>
+                <h2> Editar Cliente Titular </h2>
                 <form className="col s12">
                     <div className="row">
                         <div className="input-field col s6">

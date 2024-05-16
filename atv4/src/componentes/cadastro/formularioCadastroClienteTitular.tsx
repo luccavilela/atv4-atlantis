@@ -55,9 +55,11 @@ export default function FormularioCadastroClienteTitular(props: FormularioCadast
                 </div>
                 <div className="row">
                     <div className="input-field col s6">
+                        Data de nascimento:
                         <input id="data_nasc" type="date" className="validate" placeholder="Data de Nascimento" required />
                     </div>
                     <div className="input-field col s6">
+                        <br/>
                         <input id="telefone" type="text" className="validate" placeholder="Telefone do Cliente" required />
                     </div>
                 </div>
@@ -95,6 +97,7 @@ export default function FormularioCadastroClienteTitular(props: FormularioCadast
                 </div>
                 <div className="row">
                     <div className="input-field col s6">
+                        Data de Expedição do Documento:
                         <input id="data_expedicao" type="date" className="validate" placeholder="Data de Expedição do Documento" required />
                     </div>
                 </div>

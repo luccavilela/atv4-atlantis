@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import 'materialize-css/dist/css/materialize.min.css';
 import Cliente from "../modelos/cliente";
-import { obterClientes } from "../modelos/armazem";
+import { obterClientesTitulares } from "../modelos/armazem";
 import { removerCliente } from "../modelos/armazem";
 
 interface ListaClientesTitularesProps {
@@ -12,7 +12,7 @@ export default function ListaClientesTitulares(props: ListaClientesTitularesProp
     const [clientes, setClientes] = useState<Array<Cliente>>([]);
 
     useEffect(() => {
-        setClientes(obterClientes());
+        setClientes(obterClientesTitulares());
     }, []);
 
     const handleExcluirCliente = (index: number, nome: string) => {
@@ -45,7 +45,7 @@ export default function ListaClientesTitulares(props: ListaClientesTitularesProp
                     Número do documento: {cliente.Documento.Numero} <br/>
                     Data de expedição do documento: {cliente.Documento.DataExpedicao.toLocaleDateString()} <br/>
                     <div className="botoes">
-                        <button className="waves-effect waves-light editar" onClick={(e) => props.seletorView("Editar Cliente", e)}>Editar</button>
+                        <button className="waves-effect waves-light editar" onClick={(e) => props.seletorView("Editar Cliente Titular", e)}>Editar</button>
                         <button className="excluir" onClick={() => handleExcluirCliente(index, cliente.Nome)}>Excluir</button>
                         <button className="listar">Listar dependentes</button>
                     </div>
