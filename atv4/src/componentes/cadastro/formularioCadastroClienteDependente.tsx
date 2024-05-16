@@ -11,7 +11,6 @@ interface FormularioCadastroClienteDependenteProps {
     seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-
 export default function FormularioCadastroClienteDependente(props: FormularioCadastroClienteDependenteProps){
     const [clientes, setClientes] = useState<Array<Cliente>>([]);
     const [titularSelecionado, setTitularSelecionado] = useState<string>('');
