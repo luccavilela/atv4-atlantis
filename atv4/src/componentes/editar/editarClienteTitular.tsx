@@ -13,6 +13,11 @@ interface EditarClienteTitularProps {
 
 export default function EditarClienteTitular(props: EditarClienteTitularProps){
     const { cliente } = props;
+    const [tipoDocumento, setTipoDocumento] = useState(cliente.Documento.Tipo);
+
+    const handleTipoDocumentoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setTipoDocumento(event.target.value);
+    };
 
     const handleSalvarAlteracoes = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -94,19 +99,39 @@ export default function EditarClienteTitular(props: EditarClienteTitularProps){
                         <input id="numero_documento" type="text" className="validate" placeholder="Número do Documento" defaultValue={cliente.Documento.Numero} required />
                     </div>
                     <div>
-                    <label>Tipo de Documento:</label><br/>
-                        <label>
-                            <input name="tipo_documento" type="radio" value="CPF" checked={cliente.Documento.Tipo === "CPF"} required />
-                            <span>CPF</span>
-                        </label><br/>
-                        <label>
-                            <input name="tipo_documento" type="radio" value="RG" checked={cliente.Documento.Tipo === "RG"} required />
-                            <span>RG</span>
-                        </label><br/>
-                        <label>
-                            <input name="tipo_documento" type="radio" value="Passaporte" checked={cliente.Documento.Tipo === "Passaporte"} required />
-                            <span>Passaporte</span>
-                        </label>
+                    <label>
+                        <input 
+                            name="tipo_documento" 
+                            type="radio" 
+                            value="CPF" 
+                            checked={tipoDocumento === "CPF"} 
+                            onChange={handleTipoDocumentoChange} 
+                            required 
+                        />
+                        <span>CPF</span>
+                    </label><br/>
+                    <label>
+                        <input 
+                            name="tipo_documento" 
+                            type="radio" 
+                            value="RG" 
+                            checked={tipoDocumento === "RG"} 
+                            onChange={handleTipoDocumentoChange} 
+                            required 
+                        />
+                        <span>RG</span>
+                    </label><br/>
+                    <label>
+                        <input 
+                            name="tipo_documento" 
+                            type="radio" 
+                            value="Passaporte" 
+                            checked={tipoDocumento === "Passaporte"} 
+                            onChange={handleTipoDocumentoChange} 
+                            required 
+                    />
+                        <span>Passaporte</span>
+                    </label>
                     </div>
                 </div>
                 <div className="row">
