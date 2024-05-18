@@ -5,7 +5,7 @@ import { obterClientesTitulares } from "../modelos/armazem";
 import { removerCliente } from "../modelos/armazem";
 
 interface ListaClientesTitularesProps {
-    seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>) => void;
+    seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>, cliente: Cliente | null) => void;
 }
 
 export default function ListaClientesTitulares(props: ListaClientesTitularesProps) {
@@ -25,7 +25,7 @@ export default function ListaClientesTitulares(props: ListaClientesTitularesProp
             <h2> Lista de todos os clientes titulares</h2>
             <button
                 className="waves-effect waves-light btn cadastrar-botao botao-customizado"
-                onClick={(e) => props.seletorView("Cadastrar Cliente Titular", e)}>
+                onClick={(e) => props.seletorView("Cadastrar Cliente Titular", e, null)}>
                 Cadastrar um cliente titular
             </button>
             {clientes.map((cliente, index) => (
@@ -45,7 +45,7 @@ export default function ListaClientesTitulares(props: ListaClientesTitularesProp
                     Número do documento: {cliente.Documento.Numero} <br/>
                     Data de expedição do documento: {cliente.Documento.DataExpedicao.toLocaleDateString()} <br/>
                     <div className="botoes">
-                        <button className="waves-effect waves-light editar" onClick={(e) => props.seletorView("Editar Cliente Titular", e)}>Editar</button>
+                        <button className="waves-effect waves-light editar" onClick={(e) => props.seletorView("Editar Cliente Titular", e, cliente)}>Editar</button>
                         <button className="excluir" onClick={() => handleExcluirCliente(index, cliente.Nome)}>Excluir</button>
                         <button className="listar">Listar dependentes</button>
                     </div>

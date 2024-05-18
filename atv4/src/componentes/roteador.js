@@ -11,9 +11,11 @@ import EditarClienteTitular from "./editar/editarClienteTitular";
 
 export default function Roteador() {
     const [tela, setTela] = useState('Home')
+    const [clienteEscolhido, setClienteEscolhido] = useState('Home')
 
-    const seletorView = (valor, e) => {
+    const seletorView = (valor, e, cliente) => {
         e.preventDefault()
+        setClienteEscolhido(cliente)
         setTela(valor)
     }
 
@@ -55,13 +57,14 @@ export default function Roteador() {
                   <FormularioCadastroClienteDependente seletorView={seletorView} tema="purple lighten-4" />
                 </>
               );
-            case 'Editar Cliente Titular':
-              return (
-                <>
-                  <BarraNavegacao seletorView={seletorView} tema="purple lighten-4" botoes={['Home', 'Clientes Titulares', 'Clientes Dependentes', 'Produtos']} />
-                  <EditarClienteTitular seletorView={seletorView} tema="purple lighten-4" />
-                </>
-              );
+              case 'Editar Cliente Titular':
+                return (
+                    <>
+                        <BarraNavegacao seletorView={seletorView} tema="purple lighten-4" botoes={['Home', 'Clientes Titulares', 'Clientes Dependentes', 'Produtos']} />
+                        <EditarClienteTitular seletorView={seletorView} cliente={clienteEscolhido} tema="purple lighten-4" />
+                    </>
+                );
+            
             case 'Produtos':
               return (
                 <>

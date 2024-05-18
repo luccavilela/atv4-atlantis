@@ -17,3 +17,10 @@ export const obterClientesDependentes = () => {
 export function removerCliente(index: number): void {
     clientes.splice(index, 1);
 }
+
+export const atualizarCliente = (nome: string, cliente: Cliente) => {
+    const index = clientes.findIndex(cliente => cliente.Nome === nome);
+    if (index !== -1) {
+        clientes[index] = cliente;
+    }
+};
