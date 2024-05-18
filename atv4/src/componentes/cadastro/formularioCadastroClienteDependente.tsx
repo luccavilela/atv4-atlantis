@@ -31,7 +31,7 @@ export default function FormularioCadastroClienteDependente(props: FormularioCad
             const nomeSocial = (document.getElementById("nome_social") as HTMLInputElement).value;
             const dataNascimento = new Date((document.getElementById("data_nasc") as HTMLInputElement).value);
             const numeroDocumento = (document.getElementById("numero_documento") as HTMLInputElement).value;
-            const tipoDocumento = (document.getElementById("tipo_documento") as HTMLInputElement).value;
+            const tipoDocumento = (document.querySelector('input[name="tipo_documento"]:checked') as HTMLInputElement).value;
             const dataExpedicao = new Date((document.getElementById("data_expedicao") as HTMLInputElement).value);
 
             const documento = new Documento(numeroDocumento, tipoDocumento, dataExpedicao);
@@ -74,12 +74,23 @@ export default function FormularioCadastroClienteDependente(props: FormularioCad
                 
                 <div className="row">
                     <div className="input-field col s6">
-                        <br/>
-                        <input id="tipo_documento" type="text" className="validate" placeholder="Tipo de Documento" required />
-                    </div>
-                    <div className="input-field col s6">
                         Data de Expedição do Documento:
                         <input id="data_expedicao" type="date" className="validate" placeholder="Data de Expedição do Documento" required />
+                    </div>
+                    <div>
+                    <label>Tipo de Documento:</label><br/>
+                        <label>
+                            <input name="tipo_documento" type="radio" value="CPF" required />
+                            <span>CPF</span>
+                        </label><br/>
+                        <label>
+                            <input name="tipo_documento" type="radio" value="RG" required />
+                            <span>RG</span>
+                        </label><br/>
+                        <label>
+                            <input name="tipo_documento" type="radio" value="Passaporte" required />
+                            <span>Passaporte</span>
+                        </label>
                     </div>
                 </div>
                 <div className="row">

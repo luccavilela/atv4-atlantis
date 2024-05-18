@@ -52,6 +52,15 @@ h2, h3 {
     color: white;
   }
   
+  [type="radio"]:not(:checked), [type="radio"]:checked {
+     position: relative; 
+     opacity: 1; 
+  }
+
+  select:not(:checked), select:checked {
+    position: relative;
+    opacity: 1;
+  }
 
 
 

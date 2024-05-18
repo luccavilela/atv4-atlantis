@@ -24,7 +24,7 @@ export default function FormularioCadastroClienteTitular(props: FormularioCadast
         const pais = (document.getElementById("pais") as HTMLInputElement).value;
         const codigoPostal = (document.getElementById("codigo_postal") as HTMLInputElement).value;
         const numeroDocumento = (document.getElementById("numero_documento") as HTMLInputElement).value;
-        const tipoDocumento = (document.getElementById("tipo_documento") as HTMLInputElement).value;
+        const tipoDocumento = (document.querySelector('input[name="tipo_documento"]:checked') as HTMLInputElement).value;
         const dataExpedicao = new Date((document.getElementById("data_expedicao") as HTMLInputElement).value);
 
         const endereco = new Endereco(rua, bairro, cidade, estado, pais, codigoPostal);
@@ -91,8 +91,20 @@ export default function FormularioCadastroClienteTitular(props: FormularioCadast
                     <div className="input-field col s6">
                         <input id="numero_documento" type="text" className="validate" placeholder="Número do Documento" required />
                     </div>
-                    <div className="input-field col s6">
-                        <input id="tipo_documento" type="text" className="validate" placeholder="Tipo de Documento" required />
+                    <div>
+                    <label>Tipo de Documento:</label><br/>
+                        <label>
+                            <input name="tipo_documento" type="radio" value="CPF" required />
+                            <span>CPF</span>
+                        </label><br/>
+                        <label>
+                            <input name="tipo_documento" type="radio" value="RG" required />
+                            <span>RG</span>
+                        </label><br/>
+                        <label>
+                            <input name="tipo_documento" type="radio" value="Passaporte" required />
+                            <span>Passaporte</span>
+                        </label>
                     </div>
                 </div>
                 <div className="row">
