@@ -5,7 +5,7 @@ import { obterClientesDependentes } from "../modelos/armazem";
 import { removerCliente } from "../modelos/armazem";
 
 interface ListaClientesDependentesProps {
-    seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>) => void;
+    seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>, cliente: Cliente | null) => void;
 }
 
 export default function ListaClientesDependentes(props: ListaClientesDependentesProps) {
@@ -15,9 +15,10 @@ export default function ListaClientesDependentes(props: ListaClientesDependentes
         setClientes(obterClientesDependentes());
     }, []);
 
-    const handleExcluirCliente = (index: number, nome: string) => {
-        removerCliente(index);
+    const handleExcluirCliente = (nome: string) => {
+        removerCliente(nome);
         setClientes(clientes.filter(cliente => cliente.Nome !== nome));
+        alert("Cliente excluído com sucesso!");
     };
 
     return (
@@ -25,7 +26,7 @@ export default function ListaClientesDependentes(props: ListaClientesDependentes
             <h2> Lista de todos os clientes dependentes</h2>
             <button
                 className="waves-effect waves-light btn cadastrar-botao botao-customizado"
-                onClick={(e) => props.seletorView("Cadastrar Cliente Dependente", e)}>
+                onClick={(e) => props.seletorView("Cadastrar Cliente Dependente", e, null)}>
                 Cadastrar um cliente dependente
             </button>
             {clientes.map((cliente, index) => (
@@ -46,8 +47,8 @@ export default function ListaClientesDependentes(props: ListaClientesDependentes
                     Data de expedição do documento: {cliente.Documento.DataExpedicao.toLocaleDateString()} <br/>
                     Titular: {cliente.Titular.Nome} <br/>
                     <div className="botoes">
-                        <button className="waves-effect waves-light editar" onClick={(e) => props.seletorView("Editar Cliente Dependente", e)}>Editar</button>
-                        <button className="excluir" onClick={() => handleExcluirCliente(index, cliente.Nome)}>Excluir</button>
+                        <button className="waves-effect waves-light editar" onClick={(e) => props.seletorView("Editar Cliente Dependente", e, cliente)}>Editar</button>
+                        <button className="excluir" onClick={() => handleExcluirCliente(cliente.Nome)}>Excluir</button>
                     </div>
                 </div>
             ))}

@@ -4,14 +4,14 @@ import Cliente from "../modelos/cliente";
 import { useState } from "react";
 import Endereco from "../modelos/endereco";
 import Documento from "../modelos/documento";
-import { atualizarClienteTitular } from "../modelos/armazem";
+import { atualizarClienteDependente } from "../modelos/armazem";
 
-interface EditarClienteTitularProps {
+interface EditarClienteDependenteProps {
     seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>) => void;
     cliente: Cliente;
 }
 
-export default function EditarClienteTitular(props: EditarClienteTitularProps){
+export default function EditarClienteDependente(props: EditarClienteDependenteProps){
     const { cliente } = props;
     const [tipoDocumento, setTipoDocumento] = useState(cliente.Documento.Tipo);
 
@@ -25,31 +25,22 @@ export default function EditarClienteTitular(props: EditarClienteTitularProps){
         const nome = (document.getElementById("nome") as HTMLInputElement).value;
         const nomeSocial = (document.getElementById("nome_social") as HTMLInputElement).value;
         const dataNascimento = new Date((document.getElementById("data_nasc") as HTMLInputElement).value);
-        const telefone = (document.getElementById("telefone") as HTMLInputElement).value;
-        const rua = (document.getElementById("rua") as HTMLInputElement).value;
-        const bairro = (document.getElementById("bairro") as HTMLInputElement).value;
-        const cidade = (document.getElementById("cidade") as HTMLInputElement).value;
-        const estado = (document.getElementById("estado") as HTMLInputElement).value;
-        const pais = (document.getElementById("pais") as HTMLInputElement).value;
-        const codigoPostal = (document.getElementById("codigo_postal") as HTMLInputElement).value;
         const numeroDocumento = (document.getElementById("numero_documento") as HTMLInputElement).value;
         const tipoDocumento = (document.querySelector('input[name="tipo_documento"]:checked') as HTMLInputElement).value;
         const dataExpedicao = new Date((document.getElementById("data_expedicao") as HTMLInputElement).value);
-        
-        const endereco = new Endereco(rua, bairro, cidade, estado, pais, codigoPostal);
+
         const documento = new Documento(numeroDocumento, tipoDocumento, dataExpedicao);
         const clienteNovo = new Cliente(nome, nomeSocial, dataNascimento);
     
-        clienteNovo.Telefone = telefone;
-        clienteNovo.Endereco = endereco;
         clienteNovo.Documento = documento;
-        atualizarClienteTitular(cliente.Nome, clienteNovo);
+
+        atualizarClienteDependente(cliente.Nome, clienteNovo);
         alert("Cliente atualizado com sucesso!");
 
     };
     return (
         <div className="row">
-            <h2> Editar Cliente Titular </h2>
+            <h2> Editar Cliente Dependente </h2>
             <form className="col s12" onSubmit={handleSalvarAlteracoes}>
                 <div className="row">
                     <div className="input-field col s6">
@@ -63,34 +54,6 @@ export default function EditarClienteTitular(props: EditarClienteTitularProps){
                     <div className="input-field col s6">
                         Data de nascimento:
                         <input id="data_nasc" type="date" className="validate" placeholder="Data de Nascimento" defaultValue={cliente.DataNascimento.toISOString().split('T')[0]} required />
-                    </div>
-                    <div className="input-field col s6">
-                        <br/>
-                        <input id="telefone" type="text" className="validate" placeholder="Telefone do Cliente" defaultValue={cliente.Telefone} required />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="input-field col s6">
-                        <input id="rua" type="text" className="validate" placeholder="Rua" defaultValue={cliente.Endereco.Rua} required />
-                    </div>
-                    <div className="input-field col s6">
-                        <input id="bairro" type="text" className="validate" placeholder="Bairro" defaultValue={cliente.Endereco.Bairro} required />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="input-field col s6">
-                        <input id="cidade" type="text" className="validate" placeholder="Cidade" defaultValue={cliente.Endereco.Cidade} required />
-                    </div>
-                    <div className="input-field col s6">
-                        <input id="estado" type="text" className="validate" placeholder="Estado" defaultValue={cliente.Endereco.Estado} required />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="input-field col s6">
-                        <input id="pais" type="text" className="validate" placeholder="País" defaultValue={cliente.Endereco.Pais} required />
-                    </div>
-                    <div className="input-field col s6">
-                        <input id="codigo_postal" type="text" className="validate" placeholder="Código Postal" defaultValue={cliente.Endereco.CodigoPostal} required />
                     </div>
                 </div>
                 <div className="row">

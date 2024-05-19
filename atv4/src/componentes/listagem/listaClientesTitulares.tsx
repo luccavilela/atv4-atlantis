@@ -15,9 +15,10 @@ export default function ListaClientesTitulares(props: ListaClientesTitularesProp
         setClientes(obterClientesTitulares());
     }, []);
 
-    const handleExcluirCliente = (index: number, nome: string) => {
-        removerCliente(index);
+    const handleExcluirCliente = (nome: string) => {
+        removerCliente(nome);
         setClientes(clientes.filter(cliente => cliente.Nome !== nome));
+        alert("Cliente excluído com sucesso!");
     };
 
     return (
@@ -46,7 +47,7 @@ export default function ListaClientesTitulares(props: ListaClientesTitularesProp
                     Data de expedição do documento: {cliente.Documento.DataExpedicao.toLocaleDateString()} <br/>
                     <div className="botoes">
                         <button className="waves-effect waves-light editar" onClick={(e) => props.seletorView("Editar Cliente Titular", e, cliente)}>Editar</button>
-                        <button className="excluir" onClick={() => handleExcluirCliente(index, cliente.Nome)}>Excluir</button>
+                        <button className="excluir" onClick={() => handleExcluirCliente(cliente.Nome)}>Excluir</button>
                         <button className="listar">Listar dependentes</button>
                     </div>
                 </div>

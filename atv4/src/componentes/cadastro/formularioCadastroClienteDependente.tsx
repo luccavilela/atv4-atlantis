@@ -42,7 +42,7 @@ export default function FormularioCadastroClienteDependente(props: FormularioCad
             cliente.Titular = clienteSelecionado
 
             adicionarCliente(cliente);
-
+            alert("Cliente cadastrado com sucesso!");
             event.currentTarget.reset();
             setTitularSelecionado('');
         }

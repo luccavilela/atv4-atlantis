@@ -35,7 +35,7 @@ export default function FormularioCadastroClienteTitular(props: FormularioCadast
         cliente.Documento = documento;
 
         adicionarCliente(cliente);
-
+        alert("Cliente cadastrado com sucesso!");
         event.currentTarget.reset();
 
         
