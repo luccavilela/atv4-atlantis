@@ -16,6 +16,12 @@ export const obterClientesDependentes = () => {
     return clientes.filter(cliente => cliente.Titular)
 };
 
+export const obterDependentesDoTitular = (nomeTitular: string) => {
+    const dependentes = clientes.filter(cliente => cliente.Titular);
+    return dependentes.filter(cliente => cliente.Titular.Nome === nomeTitular);
+};
+
+
 export function removerCliente(nome:string): void {
     const index = clientes.findIndex(cliente => cliente.Nome === nome)
     if (index !== -1) {
