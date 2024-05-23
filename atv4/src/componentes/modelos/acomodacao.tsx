@@ -1,14 +1,16 @@
+import { NomeAcomadacao } from "../enumeracoes/nomeAcomodacao"
+
 export default class Acomodacao {
-    private nomeAcomodacao: string 
+    private nomeAcomadacao: NomeAcomadacao
     private camaSolteiro: Number
     private camaCasal: Number
     private suite: Number
     private climatizacao: Boolean
     private garagem: Number
 
-    constructor(nomeAcomodacao: string, camaSolteiro: Number, camaCasal: Number,
+    constructor(nomeAcomadacao: NomeAcomadacao, camaSolteiro: Number, camaCasal: Number,
         suite: Number, climatizacao: Boolean, garagem: Number) {
-        this.nomeAcomodacao = nomeAcomodacao
+        this.nomeAcomadacao = nomeAcomadacao
         this.camaSolteiro = camaSolteiro
         this.camaCasal = camaCasal
         this.suite = suite
@@ -16,7 +18,7 @@ export default class Acomodacao {
         this.garagem = garagem
     }
 
-    public get NomeAcomadacao() { return this.nomeAcomodacao }
+    public get NomeAcomadacao() { return this.nomeAcomadacao }
     public get CamaSolteiro() { return this.camaSolteiro }
     public get CamaCasal() { return this.camaCasal }
     public get Suite() { return this.suite }

@@ -1,8 +1,10 @@
 import Cliente from "../modelos/cliente";
+import Acomodacao from "./acomodacao";
 import Documento from "./documento";
 import Endereco from "./endereco";
 
 let clientes: Cliente[] = [];
+let acomodacoes: Acomodacao[] = [];
 
 export const adicionarCliente = (cliente: Cliente) => {
     clientes.push(cliente)
@@ -69,4 +71,12 @@ export const atualizarClienteDependente = (nome: string, cliente: Cliente) => {
         const documento = new Documento(numeroDocumento, tipoDocumento, dataExpedicao);
         clientes[index].Documento = documento
     }
+};
+
+export const adicionarAcomodacao = (acomodacao: Acomodacao) => {
+    acomodacoes.push(acomodacao);
+};
+
+export const obterAcomodacoes = () => {
+    return acomodacoes;
 };

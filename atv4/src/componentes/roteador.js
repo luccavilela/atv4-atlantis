@@ -10,6 +10,7 @@ import FormularioCadastroClienteDependente from "./cadastro/formularioCadastroCl
 import EditarClienteTitular from "./editar/editarClienteTitular";
 import EditarClienteDependente from "./editar/editarClienteDependente";
 import ListaDependentesdoTitular from "./listagem/listaDependentesdoTitular";
+import ListaAcomodacoes from "./listagem/listaAcomodacoes";
 
 export default function Roteador() {
     const [tela, setTela] = useState('Home')
@@ -34,7 +35,7 @@ export default function Roteador() {
             case 'Clientes Titulares':
               return (
                 <>
-                  <BarraNavegacao seletorView={seletorView} tema="purple lighten-4" botoes={['Home', 'Clientes Titulares', 'Clientes Dependentes', 'Produtos']} />
+                  <BarraNavegacao seletorView={seletorView} tema="purple lighten-4" botoes={['Home', 'Clientes Titulares', 'Clientes Dependentes', 'Produtos', 'Acomodações']} />
                   <ListaClientesTitulares seletorView={seletorView} tema="purple lighten-4" />
                 </>
               );
@@ -79,6 +80,13 @@ export default function Roteador() {
                         <BarraNavegacao seletorView={seletorView} tema="purple lighten-4" botoes={['Home', 'Clientes Titulares', 'Clientes Dependentes', 'Produtos']} />
                         <ListaDependentesdoTitular seletorView={seletorView} cliente={clienteEscolhido} tema="purple lighten-4" />
                     </>
+                );
+              case 'Acomodações':
+                return (
+                  <>
+                    <BarraNavegacao seletorView={seletorView} tema="purple lighten-4" botoes={['Home', 'Clientes Titulares', 'Clientes Dependentes', 'Produtos']} />
+                    <ListaAcomodacoes seletorView={seletorView} tema="purple lighten-4" />
+                  </>
                 );
             
             case 'Produtos':
