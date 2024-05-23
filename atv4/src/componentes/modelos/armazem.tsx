@@ -80,3 +80,10 @@ export const adicionarAcomodacao = (acomodacao: Acomodacao) => {
 export const obterAcomodacoes = () => {
     return acomodacoes;
 };
+
+export const atualizarAcomodacaoCliente = (nomeCliente: string, acomodacao: Acomodacao) => {
+    const cliente = clientes.find(cliente => cliente.Nome === nomeCliente);
+    if (cliente) {
+        cliente.Acomodacao = acomodacao
+    }
+};

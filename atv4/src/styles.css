@@ -51,6 +51,11 @@ h2, h3 {
     background-color: #1071cc; 
     color: white;
   }
+
+  .botoes button.alternativo {
+    background-color: #36b8f4; 
+    color: white;
+  }
   
   [type="radio"]:not(:checked), [type="radio"]:checked {
      position: relative; 

@@ -16,10 +16,15 @@ export default function ListaAcomodacoes(props: ListaAcomodacoesProps) {
 
     return (
         <div className="collection">
-            <h2>Lista de todas as acomodações</h2>
+            <h2>Tipos de acomodação</h2>
             {acomodacoes.map((acomodacao, index) => (
                 <div className="collection-item" key={index}>
-                    {acomodacao.NomeAcomadacao}
+                    <h3>{acomodacao.NomeAcomadacao}</h3>
+                    <p>Camas de Solteiro: {acomodacao.CamaSolteiro}</p>
+                    <p>Camas de Casal: {acomodacao.CamaCasal}</p>
+                    <p>Suítes: {acomodacao.Suite}</p>
+                    <p>Climatização: {acomodacao.Climatizacao ? "Sim" : "Não"}</p>
+                    <p>Garagem: {acomodacao.Garagem}</p>
                 </div>
             ))}
         </div>
