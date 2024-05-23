@@ -3,6 +3,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import Cliente from "../modelos/cliente";
 import { obterClientesDependentes } from "../modelos/armazem";
 import { removerCliente } from "../modelos/armazem";
+import { removerAcomodacaoCliente } from "../modelos/armazem";
 
 interface ListaClientesDependentesProps {
     seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>, cliente: Cliente | null) => void;
@@ -19,6 +20,17 @@ export default function ListaClientesDependentes(props: ListaClientesDependentes
         removerCliente(nome);
         setClientes(clientes.filter(cliente => cliente.Nome !== nome));
         alert("Cliente excluído com sucesso!");
+    };
+
+    const handleFinalizarHospedagem = (nome: string) => {
+        removerAcomodacaoCliente(nome);
+        setClientes(clientes.map(cliente => {
+            if (cliente.Nome === nome) {
+                cliente.Acomodacao = null;
+            }
+            return cliente;
+        }));
+        alert("Hospedagem finalizada com sucesso!");
     };
 
     return (
@@ -59,6 +71,9 @@ export default function ListaClientesDependentes(props: ListaClientesDependentes
                         <button className="waves-effect waves-light editar" onClick={(e) => props.seletorView("Editar Cliente Dependente", e, cliente)}>Editar</button>
                         <button className="excluir" onClick={() => handleExcluirCliente(cliente.Nome)}>Excluir</button>
                         <button className="alternativo" onClick={(e) => props.seletorView("Realizar Hospedagem", e, cliente)}>Realizar Hospedagem</button>
+                        {cliente.Acomodacao && (
+                            <button className="waves-effect waves-light finalizar" onClick={() => handleFinalizarHospedagem(cliente.Nome)}>Finalizar Hospedagem</button>
+                        )}
                     </div>
                 </div>
             ))}

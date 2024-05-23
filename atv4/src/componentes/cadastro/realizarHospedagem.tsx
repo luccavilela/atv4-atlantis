@@ -22,7 +22,11 @@ export default function RealizarHospedagem(props: RealizarHospedagemProps) {
         if (selectedAcomodacao) {
             atualizarAcomodacaoCliente(cliente.Nome, selectedAcomodacao);
             alert("Hospedagem realizada com sucesso!");
-            props.seletorView("Clientes Titulares", e); // Redireciona para a página dos Clientes Titulares
+            if (cliente.Titular) {
+                props.seletorView("Clientes Dependentes", e); 
+            } else {
+                props.seletorView("Clientes Titulares", e); 
+            }
         } else {
             alert("Por favor, selecione uma acomodação.");
         }
@@ -30,7 +34,7 @@ export default function RealizarHospedagem(props: RealizarHospedagemProps) {
 
     return (
         <div className="row">
-            <h2>Realizar Hospedagem</h2>
+            <h2>Realizar Hospedagem do cliente "{cliente.Nome}"</h2>
             <div className="input-field col s12">
                 <select
                     className="browser-default"

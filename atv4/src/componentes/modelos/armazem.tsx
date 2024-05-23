@@ -87,3 +87,11 @@ export const atualizarAcomodacaoCliente = (nomeCliente: string, acomodacao: Acom
         cliente.Acomodacao = acomodacao
     }
 };
+
+export const removerAcomodacaoCliente = (nomeCliente: string) => {
+    const cliente = clientes.find(cliente => cliente.Nome === nomeCliente);
+    if (cliente) {
+        cliente.Acomodacao = null;
+    }
+};
+

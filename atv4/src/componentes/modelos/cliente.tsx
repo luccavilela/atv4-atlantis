@@ -11,7 +11,7 @@ export default class Cliente {
     private endereco!: Endereco
     private documento!: Documento
     private dependentes: Cliente[] = []
-    private acomodacao!: Acomodacao
+    private acomodacao: Acomodacao | null = null
     private titular!: Cliente
 
     constructor(nome: string, nomeSocial: string, dataNascimento: Date) {
@@ -42,5 +42,5 @@ export default class Cliente {
     public set Documento(documento: Documento) { this.documento = documento }
     public set Telefone(telefone: string) { this.telefone = telefone }
     public set Titular(titular: Cliente) {this.titular = titular}
-    public set Acomodacao(acomodacao: Acomodacao) {this.acomodacao = acomodacao}
+    public set Acomodacao(acomodacao: Acomodacao | null) { this.acomodacao = acomodacao; }
 }

@@ -3,6 +3,7 @@ import 'materialize-css/dist/css/materialize.min.css';
 import Cliente from "../modelos/cliente";
 import { obterClientesDependentes, obterDependentesDoTitular } from "../modelos/armazem";
 import { removerCliente } from "../modelos/armazem";
+import { removerAcomodacaoCliente } from "../modelos/armazem";
 
 interface ListaDependentesdoTitularProps {
     seletorView: (valor: string, e: React.MouseEvent<HTMLButtonElement>, cliente: Cliente | null) => void;
@@ -23,9 +24,20 @@ export default function ListaDependentesdoTitular(props: ListaDependentesdoTitul
         alert("Cliente excluído com sucesso!");
     };
 
+    const handleFinalizarHospedagem = (nome: string) => {
+        removerAcomodacaoCliente(nome);
+        setClientes(clientes.map(cliente => {
+            if (cliente.Nome === nome) {
+                cliente.Acomodacao = null;
+            }
+            return cliente;
+        }));
+        alert("Hospedagem finalizada com sucesso!");
+    };
+
     return (
         <div className="collection">
-            <h2> Lista de todos os clientes dependentes do cliente  </h2>
+            <h2> Lista de todos os clientes dependentes do cliente "{cliente.Nome}" </h2>
             {clientes.map((cliente, index) => (
                 <div className="collection-item" key={index}>
                     Nome: {cliente.Nome} <br/>
@@ -42,10 +54,23 @@ export default function ListaDependentesdoTitular(props: ListaDependentesdoTitul
                     Tipo de documento: {cliente.Documento.Tipo} <br/>
                     Número do documento: {cliente.Documento.Numero} <br/>
                     Data de expedição do documento: {cliente.Documento.DataExpedicao.toLocaleDateString()} <br/>
+                    {cliente.Acomodacao ? (
+                        <>
+                            Hospedado em: {cliente.Acomodacao.NomeAcomadacao} <br/>
+                        </>
+                    ) : (
+                        <>
+                            Hospedado: Não hospedado <br/>
+                        </>
+                    )}
                     Titular: {cliente.Titular.Nome} <br/>
                     <div className="botoes">
                         <button className="waves-effect waves-light editar" onClick={(e) => props.seletorView("Editar Cliente Dependente", e, cliente)}>Editar</button>
                         <button className="excluir" onClick={() => handleExcluirCliente(cliente.Nome)}>Excluir</button>
+                        <button className="alternativo" onClick={(e) => props.seletorView("Realizar Hospedagem", e, cliente)}>Realizar Hospedagem</button>
+                        {cliente.Acomodacao && (
+                            <button className="waves-effect waves-light finalizar" onClick={() => handleFinalizarHospedagem(cliente.Nome)}>Finalizar Hospedagem</button>
+                        )}
                     </div>
                 </div>
             ))}
