@@ -1,3 +1,7 @@
+# Atividade 4
+
+## Desenvolvimento Web III
+
 ## Como Rodar o Projeto
 
 Siga os passos abaixo para configurar e executar o projeto localmente.
@@ -13,4 +17,5 @@ No diretório `atv4/`, execute os seguintes comandos para compilar o código Typ
 ```bash
 npm install
 npm install typescript
-npm start
+npx tsc
+node src/js/app/app.js
