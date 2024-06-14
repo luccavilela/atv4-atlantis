@@ -17,5 +17,4 @@ No diretório `atv4/`, execute os seguintes comandos para compilar o código Typ
 ```bash
 npm install
 npm install typescript
-npx tsc
-node src/js/app/app.js
+npm start
